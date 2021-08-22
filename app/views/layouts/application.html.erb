@@ -4,12 +4,80 @@
     <title>NaganoCake</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
+ <header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/"><span>NaganoCake</span></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+         <% if admin_signed_in? %>
+          <li class="nav-item">
+           <li><%= link_to "商品一覧", "/admin",class:"fas fa-home text-light" %></li>
+          </li>
+
+          <li class="nav-item">
+           <li><%= link_to "会員一覧", "/public/items", class:"fas fa-users nav-link text-light" %></li>
+          </li>
+
+          <li class="nav-item">
+            <li><%= link_to "注文履歴一覧", "/public/orders", class:"fas fa-book-open nav-link text-light" %></li>
+          </li>
+
+          <li class="nav-item">
+           <li><%= link_to "ジャンル一覧", "/admins/genres", class:"fas fa-sign-out-alt nav-link text-light" %></li>
+          </li>
+
+          <li class="nav-item">
+           <li><%= link_to "ログアウト", "/admins/sign_out", class:"fas fa-sign-out-alt nav-link text-light" %></li>
+          </li>
+
+
+         <% else %>
+          <li class="nav-item">
+           <li><%= link_to "About","/about", class:"fas fa-home text-light" %></li>
+          </li>
+
+          <li class="nav-item">
+           <li><%= link_to "商品一覧","/admins/products", class:"fas fa-link nav-link text-light" %></li>
+          </li>
+
+          <li class="nav-item">
+           <li><%= link_to "新規登録","/admins/sign_up", class:"fas fa-user-plus nav-link text-light" %></li>
+          </li>
+
+          <li class="nav-item">
+           <li><%= link_to "ログイン","/admins/sign_in", class:"fas fa-sign-in-alt nav-link text-light" %></li>
+         </li>
+
+
+        <% end %>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+
+  <main>
     <%= yield %>
-  </body>
+  </main>
+  <footer>
+  <div class="container mt-5">
+  	<div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
+</body>
 </html>

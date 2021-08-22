@@ -1,0 +1,8 @@
+<% @products.each do |product| %>
+<div>
+  <%= attachment_image_tag post_image, :image %>
+  <p>投稿ユーザー画像：<%= image_tag('sample-author1.jpg') %></p>
+  <p>ショップ名：<%= product_image.name %></p>
+  <p>説明：<%= product_image.introduction %></p>
+</div>
+<% end %>
