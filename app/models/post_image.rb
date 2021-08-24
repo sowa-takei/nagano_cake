@@ -1,4 +1,4 @@
 class PostImage < ApplicationRecord
-   belongs_to :ad
+   belongs_to :admin
    attachment :image
 end

@@ -11,7 +11,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.admin_id = current_admin.id
     @product.save
-    redirect_to product_path
+    redirect_to admin_product_path
   end
 
   def show
@@ -22,7 +22,7 @@ class Admin::ProductsController < ApplicationController
 
   def update
   end
-  
+
    # 投稿データのストロングパラメータ
   private
 
