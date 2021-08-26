@@ -1,0 +1,5 @@
+<h1>ジャンル編集</h1>
+<%= form_with model: @genres, local:true do |f| %>
+ <%= f.text_field :name %>
+  <td><%= link_to "Edit",edit_admin_genre_path(@genre), class: "btn btn-sm btn-success" %></td>
+<% end %>
