@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   namespace :admin do
   resources :products, only: [:new, :index, :create, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update]
+  resources :customers, only: [:index, :show, :edit, :update]
  end
 end
