@@ -16,7 +16,7 @@ class Admin::GenresController < ApplicationController
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
-     redirect_to admin_genres_path(@genre), notice:"You have updated book successfully."
+     redirect_to admin_genres_path, notice:"You have updated book successfully."
     else
      render :show
     end
@@ -26,6 +26,6 @@ class Admin::GenresController < ApplicationController
   private
 
   def genre_params
-    params.permit(:name)
+    params.require(:genre).permit(:name)
   end
 end
