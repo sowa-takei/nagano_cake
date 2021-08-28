@@ -1,4 +1,15 @@
 <h1>商品一覧</h1>
 <% @products.each do |product| %>
-
+<tr>
+ <td>
+<h4>商品名</h4>
+<%= link_to  admin_product_path(product) do %>
+ <%= product.name %>
+ <% end %>
+ </td>
+<h4>税抜き価格</h4>
+ <%= product.price %>
+<h4>ジャンル</h4>
+ <%= product.genre_id %>
 <% end %>
+</tr>
