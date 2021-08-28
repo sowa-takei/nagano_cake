@@ -8,5 +8,6 @@
 <h4>税抜価格</h4>
  <%= f.text_field :price %>円
 <h4>販売ステータス</h4>
- <%= f.submit "編集する" %>
+
+ <%= link_to "編集する",edit_admin_product_path(@product), class: "btn btn-sm btn-success" %>
 <% end %>
