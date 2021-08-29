@@ -1,15 +1,57 @@
-<h1>商品一覧</h1>
+<div class="col-md-8 offset-md-1">
+   <h2>商品一覧</h2>
+   <table class="table">
+    <thead>
+     <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+      <th colspan="3"></th>
+     </tr>
+    </thead>
+    <tbody>
 <% @products.each do |product| %>
 <tr>
  <td>
-<h4>商品名</h4>
-<%= link_to  admin_product_path(product) do %>
- <%= product.name %>
- <% end %>
+ <div class="form-group">
+  <%= product.genre_id %>
+ </div>
+</td>
+
+ <td>
+  <div class="form-group">
+   <%= link_to  admin_product_path(product) do %>
+   <%= product.name %>
+  </div>
+　 <% end %>
  </td>
-<h4>税抜き価格</h4>
- <%= product.price %>
-<h4>ジャンル</h4>
- <%= product.genre_id %>
+
+ <td>
+ <div class="form-group">
+  <%= product.price %>
+ </div>
+ </td>
+
+<td>
+ <div class="form-group">
+  <%= @genres.name %>
+ </div>
+</td>
+
+
+<td>
+ <div class="form-group">
+  <label for="product_is_activ"></label>
+<% if product.is_active == true %>
+  <span>販売中</span>
+ <% else %>
+  <span>販売停止中</span>
+ <% end %>
+ </div>
+ </td>
+ </tr>
 <% end %>
-</tr>
+
+</div>

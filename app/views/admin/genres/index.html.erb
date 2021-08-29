@@ -1,8 +1,10 @@
 <h1>ジャンル一覧・追加</h1>
 <%= form_with model: @genre,url:admin_genres_path(@genre), local:true do |f| %>
-<h4>ジャンル名</h4>
+<div class="form-group">
+ <label for="genre_name">ジャンル名</label>
  <%= f.text_field :name %>
  <%= f.submit "新規登録",class: "btn btn-sm btn-success" %>
+</div>
 <% end %>
  <h4>ジャンル</h4>
  <% @genres.each do |genre| %>

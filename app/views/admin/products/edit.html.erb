@@ -1,20 +1,41 @@
 <h1>商品編集</h1>
 <%= form_with model: @product,url:admin_product_path(@product), local:true do |f| %>
-<label for="inputImage">商品画像</label>
-<%= f.attachment_field :image, placeholder: "プロフィール画像" %>
-<h4>商品名</h4>
- <%= f.text_field :name %>
-<h4>商品説明</h4>
- <%= f.text_area :introduction %>
- <h4>ジャンル</h4>
-  <%= f.collection_select(:genre_id, @genres, :id, :name) %>
-<h4>税抜価格</h4>
- <%= f.text_field :price %>円
-<h4>販売ステータス</h4>
-<%= f.radio_button :receive_news, '1' %>
-<%= f.label :receive_news, '販売中', value: 1 %>
 
-<%= f.radio_button :receive_news, '0' %>
-<%= f.label :receive_news, '販売停止中', value: 0 %>
+<div class="form-group">
+ <label for="inputImage">商品画像</label>
+ <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
+</div>
+
+<div class="form-group">
+ <label for="product_name">商品名</label>
+ <%= f.text_field :name %>
+</div>
+
+<div class="form-group">
+ <label for="product_introduction">商品名</label>
+ <%= f.text_area :introduction %>
+</div>
+
+ <div class="form-group">
+  <label for="product_genre">ジャンル</label>
+  <%= f.collection_select(:genre_id, @genres, :id, :name) %>
+ </div>
+
+<div class="form-group">
+ <label for="product_price">税抜価格</label>
+ <%= f.text_field :price %>円
+</div>
+
+<div class="form-group">
+ <label for="receive_news">税抜価格</label>
+ <%= f.radio_button :receive_news, '1' %>
+ <%= f.label :receive_news, '販売中', value: 1 %>
+
+ <%= f.radio_button :receive_news, '0' %>
+ <%= f.label :receive_news, '販売停止中', value: 0 %>
+</div>
+
+<div class="form-group">
 <%= f.submit "変更を保存",class: "btn btn-sm btn-success" %>
+</div>
 <% end %>
