@@ -8,12 +8,11 @@ Rails.application.routes.draw do
    resources :customers, only: [:index, :show, :edit, :update]
   end
 
- namespace :public do
- get 'home/about' => "homes#about", as: "home_about"
- get 'home/about' => "homes#about", as: "home_about"
+ scope module: :public do
+ get 'homes/about' => "homes#about"
  end
 
  root to: 'public/homes#top'
- get 'home/about' => "homes#about"
+
 
 end
