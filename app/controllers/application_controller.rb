@@ -8,8 +8,8 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_products_path
        #pathは設定したい遷移先へのpathを指定してください
-    when Customer
-      root_path
+    when Public
+      public_registations_path
       #ここもpathはご自由に変更してください
     end
   end

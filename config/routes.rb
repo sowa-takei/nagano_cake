@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    passwords: 'admins/passwords',
+    registrations: 'admins/registrations'
+  }
+  devise_for :publics, controllers: {
+    sessions: 'publics/sessions',
+    passwords: 'publics/passwords',
+    registrations: 'publics/registrations'
+  }
   get 'admin' => "admin/homes#top", as: "admin_top"
 
   namespace :admin do
