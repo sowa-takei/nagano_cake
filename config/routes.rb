@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+   root to: 'public/homes#top'
 
-  
   devise_for :admins, controllers: {
     sessions: 'admins/sessions',
     passwords: 'admins/passwords',
@@ -19,13 +19,12 @@ Rails.application.routes.draw do
    resources :customers, only: [:index, :show, :edit, :update]
   end
 
- scope module: :customer do
+ scope module: :public do
   get 'homes/about' => "homes#about"
   resources :items, only: [:index, :show]
-
  end
 
- root to: 'public/homes#top'
+
 
 
 end

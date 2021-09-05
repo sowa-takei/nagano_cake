@@ -1,1 +1,23 @@
+<div class="container">
+ <div class="row">
+  <div class="col-md-2">
+   <h4>ジャンル検索</h4>
+    <% @genres.each do |genre| %>
+    <%= genre.name %></br>
+    <% end %>
+   </div>
+  </div>
+   <div class="row">
+  <div class="col-md-10">
 <h1>商品一覧</h1>
+ <% @products.each do |product| %>
+  <div class="form-group">
+   <%= link_to item_path(product) do %>
+    <%= attachment_image_tag product, :image, :fill,300,200 %></br>
+    <%= product.name %><br>
+    <%= product.price %>
+   <% end %>
+  <% end %>
+  </div>
+ </div>
+</div>
