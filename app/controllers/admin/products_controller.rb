@@ -17,6 +17,7 @@ class Admin::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @cart_items = Cart_item.all
   end
 
   def edit
@@ -37,7 +38,7 @@ class Admin::ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :image, :introduction, :price, :genre_id, :image, :is_active)
+    params.require(:product).permit(:name, :image, :introduction, :price, :genre_id, :image, :is_active, )
   end
 
 end

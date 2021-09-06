@@ -1,0 +1,24 @@
+<h1>ショッピングカート</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>商品名</h2>
+      <%= attachment_image_tag @product, :image, format: 'jpeg',size: "300x200" %>
+
+       <%= f.hidden_field :product_id, :value => cart_item.product.name %>
+    </div>
+    <div class="col-md-2">
+      <h2>単価(税込)</h2>
+    </div>
+    <div class="col-md-2">
+      <h2>数量</h2>
+    </div>
+    <div class="col-md-2">
+      <h2>小計</h2>
+    </div>
+    <div class="col-md-2">
+    </div>
+
+  </div>
+</div>
