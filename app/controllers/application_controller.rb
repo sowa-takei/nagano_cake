@@ -9,9 +9,13 @@ class ApplicationController < ActionController::Base
       admin_products_path
        #pathは設定したい遷移先へのpathを指定してください
     when Public
-      public_registations_path
+      items_path
       #ここもpathはご自由に変更してください
     end
+  end
+
+  def after_sign_out_path_for(resource)
+   root_path
   end
 
   protected
