@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_012558) do
+ActiveRecord::Schema.define(version: 2021_09_11_024013) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -69,6 +69,29 @@ ActiveRecord::Schema.define(version: 2021_09_05_012558) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "order_details", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "order_id"
+    t.integer "tax_price"
+    t.integer "amount"
+    t.integer "making_status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "postal_code"
+    t.string "address"
+    t.string "name"
+    t.integer "shipping_cost"
+    t.integer "total_payment"
+    t.integer "payment_method", default: 0, null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "post_images", force: :cascade do |t|
     t.text "product_name"
     t.text "explanation"
@@ -79,7 +102,7 @@ ActiveRecord::Schema.define(version: 2021_09_05_012558) do
 
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
-    t.string "price", null: false
+    t.integer "price", null: false
     t.integer "genre_id", null: false
     t.boolean "is_active", default: true, null: false
     t.string "image_id", null: false

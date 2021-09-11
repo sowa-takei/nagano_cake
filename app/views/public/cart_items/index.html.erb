@@ -1,43 +1,51 @@
 <h1>ショッピングカート</h1>
+<%= link_to "カートを空にする", cart_item_path(@cart_items), method: :delete %>
+<table>
+ <thead>
+	 <tr>
+		 <th></th>
+		 <th>商品名</th>
+		 <th>単価(税込)</th>
+		 <th>数量</th>
+		 <th>小計</th>
+		 <th></th>
+	 </tr>
+ </thead>
+ <tbody>
+  <% @sum = 0 %>
+  <% @cart_items.each do |cart_item| %>
+   <tr>
+    <td><%= attachment_image_tag cart_item.product, :image, format: 'jpeg',size: "100x50" %></td>
+    <td><%= cart_item.product.name %></td>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <h2>商品名</h2>
-       <% @cart_items.each do |cart_item| %>
-       <%= attachment_image_tag cart_item.product, :image, format: 'jpeg',size: "100x50" %>
-       <%= cart_item.product.name %></br>
-       <% end %>
-    </div>
+    <td><%= cart_item.product.with_tax_price%></td>
 
-    <div class="col-md-2">
-      <h2>単価(税込)</h2>
-       <% @cart_items.each do |cart_item| %>
-      <%= cart_item.product.price %></br>
-      <% end %>
-    </div>
+    <%= form_with model: cart_item,url:cart_item_path(cart_item), local:true do |f| %>
+     <td><%= f.select :amount, *[1..100] %>
+         <%= f.submit "変更",class: "btn btn-sm btn-success" %></td>
+    <% end %>
 
-    <div class="col-md-2">
-      <h2>数量</h2>
-      <% @cart_items.each do |cart_item| %>
-       <%= form_with model: cart_item,url:cart_item_path(cart_item), local:true do |f| %>
+    <td><%= cart_item.subtotal%></td>
+        <% @sum +=  cart_item.subtotal %>
 
-
-       <%= f.select :amount, *[1..10] %>
-       <% end %>
-       <% end %>
-    </div>
-
-    <div class="col-md-2">
-      <h2>小計</h2>
-      <% @cart_items.each do |cart_item| %>
-       <%= cart_item.product.introduction %></br>
-        <% end %>
-    </div>
-    <div class="col-md-2">
-    </div>
+    <td><%= link_to "削除する", delete_cart_item_path(cart_item), method: :delete %></td>
+    <% end %>
+   </tr>
+  <tbody>
+ </table>
+   <%= link_to "買い物を続ける", root_path(@home) %>
+    合計金額 <%= @sum %>
+   
 
 
 
-  </div>
-</div>
+
+
+
+
+
+
+
+
+
+
