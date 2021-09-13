@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
  scope module: :public do
   get 'homes/about' => "homes#about"
+  post 'orders/verification' => "orders#verification"
+  get 'orders/verification' => "orders#verification"
   resources :items, only: [:index, :show]
   resources :orders, only: [:new, :index, :show, :create]
   resources :cart_items, only: [:index, :update, :destroy, :create] do

@@ -1,0 +1,19 @@
+<h1>注文情報入力</h1>
+<%= form_with model: @order,url: orders_verification_path, local: true do |f| %>
+<div class="field">
+  <h4>支払方法</h4>
+  <%= f.radio_button :payment_method, 0 %>クレジットカード</br>
+
+  <%= f.radio_button :payment_method, 1 %>銀行振込
+</div>
+
+<div class="field">
+ <h4>お届け先</h4>
+  <%= f.radio_button :address, 0vd %>クレジットカード</br>
+  
+</div>
+  <%#= f.collection_radio_buttons :payment_method,Order.payment_methods, :first , :last %>
+   <%= f.submit "新規登録" %>
+
+  <% end %>
+
