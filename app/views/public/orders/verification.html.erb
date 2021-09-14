@@ -1,1 +1,76 @@
-<%= @order.payment_method %>
+<h2>注文情報確認</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+     <table class="table">
+	     <tr>
+		     <th>商品名</th>
+		     <th>単価(税込)</th>
+		     <th>数量</th>
+		     <th>小計</th>
+	     </tr>
+ <% @sum = 0 %>
+
+ <% @cart_items.each do |cart_item| %>
+   <tr>
+    <td><%= attachment_image_tag cart_item.product, :image, format: 'jpeg',size: "50x20" %>
+        <%= cart_item.product.name %></td>
+
+    <td><%= cart_item.product.with_tax_price%></td>
+
+    <td><%= cart_item.amount  %></td>
+
+
+      <td><%= cart_item.subtotal%></td>
+        <% @sum +=  cart_item.subtotal %>
+
+
+
+   <% end %>
+   </tr>
+
+
+	     </table>
+	    </div>
+	    <div class="col-4">
+	     <table class="table">
+      <tbody>
+       <%# @orders.each do |order| %>
+
+       <tr>
+        <th scope="row">送料</th>
+
+
+        <td><%= shipping_cost %> </td>
+
+
+
+
+       </tr>
+       <tr>
+        <th scope="roe">商品合計</th>
+        <td><%= @sum %></td>
+
+       </tr>
+       <tr>
+        <th scope="roe">請求金額</th>
+        <td><%= @sum + shipping_cost %></td>
+
+       </tr>
+
+
+      </tbody>
+     </table>
+    </div>
+   </div>
+   </div>
+   <h2>支払方法</h2>
+   <%= @order.payment_method %>
+   <h2>お届け先</h2>
+   〒<%= @order.postal_code %>
+   <%= @order.address %></br>
+   <%= @order.name %>
+
+
+
+

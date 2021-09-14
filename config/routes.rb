@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'homes/about' => "homes#about"
   post 'orders/verification' => "orders#verification"
   get 'orders/verification' => "orders#verification"
+  get 'orders/completion' => "orders#completion"
   resources :items, only: [:index, :show]
   resources :orders, only: [:new, :index, :show, :create]
   resources :cart_items, only: [:index, :update, :destroy, :create] do
