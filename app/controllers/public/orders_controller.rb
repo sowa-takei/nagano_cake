@@ -8,6 +8,7 @@ class Public::OrdersController < ApplicationController
   def verification
     @order = Order.new
     @order.payment_method = params[:order][:payment_method].to_i
+    puts @order.payment_method
     @cart_items = current_customer.cart_items
     if params[:order][:address_type] == "0"
       @order.postal_code = current_customer.postal_code
@@ -30,9 +31,8 @@ class Public::OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
-    order.save
-    redirect_to orders_verification_path
-
+    @order.save
+    redirect_to orders_completion_path
   end
 
   def index
@@ -41,8 +41,9 @@ class Public::OrdersController < ApplicationController
   def show
   end
 
+  private
   def order_params
-    params.require(:order).permit(:payment_method )
+    params.require(:order).permit(:customer_id, :postal_code, :payment_method, :address, :name, :shipping_cost, :total_payment, :status )
   end
 
 end
