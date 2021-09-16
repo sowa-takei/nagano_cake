@@ -32,6 +32,18 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.customer_id = current_customer.id
     @order.save
+    current_customer.cart_items.each do |cart_item|
+    @order_item = OrderDetail.new
+    @order_item.order_id = @order.id
+    @order_item.amount = cart_item.amount
+    @order_item.tax_price = (cart_item.product.price * 1.1).floor
+    @order_item.product_id = cart_item.product_id
+    @order_item.save
+    end
+    # ↑order_detailに保存する
+    current_customer.cart_items.destroy_all
+    # ↑orderとorder_detailに保存したので、カート内商品は削除。
+
     redirect_to orders_completion_path
   end
 

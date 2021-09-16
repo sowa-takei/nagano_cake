@@ -24,8 +24,11 @@ Rails.application.routes.draw do
   post 'orders/verification' => "orders#verification"
   get 'orders/verification' => "orders#verification"
   get 'orders/completion' => "orders#completion"
+  get 'customers/withdrawal' => "customers#withdrawal"
+  get 'customers/process' => "customers#process"
   resources :items, only: [:index, :show]
   resources :orders, only: [:new, :index, :show, :create]
+  resource :customers, only: [:show, :edit, :update]
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     member do
       delete :delete

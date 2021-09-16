@@ -1,5 +1,5 @@
 module ShippingCostHelper
   def shipping_cost
-    8000000
+    800
   end
 end
