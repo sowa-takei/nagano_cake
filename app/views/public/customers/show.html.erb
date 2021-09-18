@@ -1,6 +1,6 @@
 <h2>マイページ</h2>
 登録情報
-<%= link_to "編集する", edit_customers_path(@customers),class: "btn btn-sm btn-success" %>
+<%= link_to "編集する", edit_customers_path,class: "btn btn-sm btn-success" %>
 <div class="container">
  <div class="row">
   <div class="col-6">
@@ -38,5 +38,5 @@
  </div>
 </div>
 <h2>配送先</h2>
-<%= link_to "一覧を見る",shipping_address_index_path(@customer) %>
+<%= link_to "一覧を見る",addresses_path(@customer) %>
 <h2>注文履歴</h2>

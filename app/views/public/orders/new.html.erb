@@ -19,6 +19,8 @@
 
 <div class="field">
   <%= f.radio_button :address_type, 1 %>登録済住所から選択</br>
+  <%= f.collection_select(:address_id, @addresses, :id, :full_address ) %>
+  <%#= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
 </div></br>
 
 <div class="field">

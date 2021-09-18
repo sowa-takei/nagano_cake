@@ -3,21 +3,21 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @addresses = Addresse.all
   end
 
   def verification
     @order = Order.new
     @order.payment_method = params[:order][:payment_method].to_i
-    puts @order.payment_method
     @cart_items = current_customer.cart_items
     if params[:order][:address_type] == "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
     elsif  params[:order][:address_type] == "1"
-      # @order.postal_code =
-      # @order.address =
-      # @order.name =
+       @order.postal_code = @addresse.find_by(address_id: params[:postal_code])
+       @order.address = params[:address_id][:address]
+       @order.name = params[:address_id][:name]
     elsif  params[:order][:address_type] == "2"
       @order.postal_code =params[:order][:full_name]
       @order.address = params[:order][:address]

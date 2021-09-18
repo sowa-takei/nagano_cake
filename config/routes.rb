@@ -6,11 +6,7 @@ Rails.application.routes.draw do
     passwords: 'admins/passwords',
     registrations: 'admins/registrations'
   }
-  devise_for :customers, controllers: {
-    sessions: 'customers/sessions',
-    passwords: 'customers/passwords',
-    registrations: 'customers/registrations'
-  }
+
   get 'admin' => "admin/homes#top", as: "admin_top"
 
   namespace :admin do
@@ -29,12 +25,18 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   resources :orders, only: [:new, :index, :show, :create]
   resource :customers, only: [:show, :edit, :update]
-  resources :shipping_address, only: [:index, :edit, :create, :update, :destroy]
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     member do
       delete :delete
     end
   end
+
+  devise_for :customers, controllers: {
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords',
+    registrations: 'customers/registrations'
+  }
 
  end
 
