@@ -31,7 +31,8 @@
     	   <td><%= addresse.postal_code %></td>
     	   <td><%= addresse.address %></td>
     	   <td><%= addresse.name %></td>
-    	   <td><%= link_to "編集する", edit_address_path(@addresses),class: "btn btn-sm btn-success" %></td>
+    	   <td><%= link_to "編集する", edit_address_path(addresse),class: "btn btn-sm btn-success" %>
+    	       <%= link_to "削除する", address_path(addresse),class: "btn btn-sm btn-danger" %></td>
     	   <% end %>
     	  </tr>
     	 </tbody>

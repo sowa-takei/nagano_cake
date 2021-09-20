@@ -10,16 +10,18 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @order.payment_method = params[:order][:payment_method].to_i
     @cart_items = current_customer.cart_items
-    if params[:order][:address_type] == "0"
+    case params[:address_type]
+    when "0"
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
-    elsif  params[:order][:address_type] == "1"
-       @order.postal_code = @addresse.find_by(address_id: params[:postal_code])
-       @order.address = params[:address_id][:address]
-       @order.name = params[:address_id][:name]
-    elsif  params[:order][:address_type] == "2"
-      @order.postal_code =params[:order][:full_name]
+    when "1"
+       addresse = Addresse.find(params[:address][:id])
+       @order.postal_code = addresse.postal_code
+       @order.address = addresse.address
+       @order.name = addresse.name
+    when "2"
+      @order.postal_code =params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name =  params[:order][:name]
     end
@@ -48,9 +50,14 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @orders = Order.all
   end
 
   def show
+    @order = Order.find(params[:id])
+    #@orders = Order.all
+    @orders = Order.all
+
   end
 
   private

@@ -3,14 +3,13 @@
 <div class="field">
   <h4>支払方法</h4>
   <%= f.radio_button :payment_method, 0 %>クレジットカード</br>
-  <%= f.label :payment_method, "クレジットカード" %>
 
   <%= f.radio_button :payment_method, 1 %>銀行振込
 </div></br>
 
 <div class="field">
  <h4>お届け先</h4>
-  <%= f.radio_button :address_type, 0 %>ご自身の住所</br>
+  <%= radio_button_tag :address_type, 0 %>ご自身の住所</br>
   〒<%= current_customer.postal_code %>
   <%= current_customer.address %></br>
   <%= current_customer.last_name %>
@@ -18,15 +17,15 @@
 </div></br>
 
 <div class="field">
-  <%= f.radio_button :address_type, 1 %>登録済住所から選択</br>
-  <%= f.collection_select(:address_id, @addresses, :id, :full_address ) %>
+  <%= radio_button_tag :address_type, 1 %>登録済住所から選択</br>
+  <%= collection_select(:address, :id, @addresses, :id, :full_address ) %>
   <%#= f.select :address_id, options_from_collection_for_select(Address.all, :id, :full_address) %>
 </div></br>
 
 <div class="field">
-  <%= f.radio_button :address_type, 2 %>新しいお届け先</br>
+  <%= radio_button_tag :address_type, 2 %>新しいお届け先</br>
   <%= f.label :郵便番号 %>(ハイフンなし)
-  <%= f.text_field :full_name %>
+  <%= f.text_field :postal_code %>
 </div>
 
 <div class="field">

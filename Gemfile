@@ -76,3 +76,4 @@ gem "refile-mini_magick"
 gem "enum_help"
 
 gem 'rails-i18n', '~> 5.1'
+gem 'pry-rails'
