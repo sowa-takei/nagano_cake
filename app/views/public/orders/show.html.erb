@@ -1,3 +1,4 @@
+
 <h2>注文詳細履歴</h2>
 <h3>注文情報</h3>
 <h3>請求額</h3>
@@ -33,7 +34,7 @@
 　   <tbody>
   　   <tr>
   　    <th scope="row">商品合計</th>
-  　    <td><%=  %></td>
+  　    <td><%= @order.total_payment - shipping_cost  %></td>
   　    <td><%#= @sum %></td>
   　   </tr>
   　   <tr>
@@ -56,12 +57,14 @@
 　     <th>個数</th>
 　     <th>小計</th>
   　   </tr>
-  　   <tr>
-  　    <% @orders.each do |order| %>
-  　    <td><%= order.name %></td>
 
-  　    <td><%= order.order_details.name %></td>
-  　    <td><%= order.order_details. %></td>
+  　     <% @orders.each do |order| %>
+  　   <tr>
+  　    <td><%= order.product.name %></td>
+  　    <td><%= order.tax_price %></td></br>
+  　    <td><%= order.amount %></td>
+  　    <td><%= order.tax_price * order.amount %></td>
+
   　    <% end %>
   　   </tr>
 

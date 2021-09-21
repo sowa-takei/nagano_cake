@@ -8,24 +8,25 @@
      </div>
     </div>
   <div class="row">
-   <div class="col-md-10">
+   <!--<div class="col-md-10">-->
    <p>ようこそ、ながのCAKEへ！</p>
    <p>このサイトは、ケーキ販売のECサイトになります。</p>
    <p>会員でない方も商品の閲覧はできますが、</p>
    <p>購入には会員登録が必要になります。</p>
    <h2>新着商品</h2>
-   <% @products.each do |product| %>
-   <div class="form-group">
-      <%= attachment_image_tag product, :image, :fill,300,200 %>
-   </div>
-   <div class="form-group">
+    <% @products.each do |product| %>
+    <div class="col-lg-6 col-md-6 mb-4">
+    <!--<div class="form-group">-->
+      <%= attachment_image_tag product, :image, :fill,100,100 %>
+    <!--</div>-->
+    <!--<div class="form-group">-->
     <%= product.name %>
-   </div>
-   <div class="form-group">
+    <!--</div>-->
+    <!--<div class="form-group">-->
     <%= product.price %>
+    <!--</div>-->
    </div>
     <% end %>
     <%= link_to "全ての商品を見る", items_path %>
-  </div>
-  </div>
+ </div>
   </div>
