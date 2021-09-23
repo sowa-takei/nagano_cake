@@ -7,11 +7,12 @@ Rails.application.routes.draw do
     registrations: 'admins/registrations'
   }
 
-  get 'admin' => "admin/homes#top", as: "admin_top"
+  get 'admin' => "admin/homes#top", as: "admin"
 
   namespace :admin do
    resources :products, only: [:new, :index, :create, :show, :edit, :update]
    resources :genres, only: [:index, :create, :edit, :update]
+   resources :orders, only: [:show, :update]
    resources :customers, only: [:index, :show, :edit, :update]
   end
 

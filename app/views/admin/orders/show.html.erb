@@ -1,0 +1,79 @@
+<h2>注文詳細履歴</h2>
+<div class= "name">購入者
+ <%= @order.name %>
+</div>
+
+<div class= "created_at">注文日
+ <%= @order.created_at.strftime("%Y/%m/%d") %>
+</div>
+
+<div class= "address">配送先
+ <%= @order.address %>
+</div>
+
+<div class= "payment_method">支払方法
+ <%= @order.payment_method_i18n %>
+</div>
+
+<%= form_with model: @order,url:admin_order_path(@order), local:true do |f| %>
+<div class= "status">注文ステータス
+ <%#= f.select　(:order, :id, Order.statuses.keys.to_a ) %>
+ <%= f.select :status, Order.statuses.keys.to_a %>
+</div>
+<%= f.submit "更新",class:"btn btn-success" %>
+<% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-8">
+   <table class="table">
+     <thead>
+       <tr>
+         <th>商品名</th>
+         <th>単価(税込)</th>
+         <th>数量</th>
+         <th>小計</th>
+         <th>製作ステータス</th>
+         <th></th>
+       </tr>
+     </thead>
+     <tbody>
+      <% @order.order_details.each do |order_detail| %>
+       <tr>
+         <td><%= order_detail.product.name %></br></td>
+
+         <td><%= order_detail.tax_price %></br></td>
+
+         <td><%= order_detail.amount %></br></td>
+
+         <td><%= order_detail.tax_price * order_detail.amount %></br></td>
+
+         <td><%= select(:order_detail, :id, OrderDetail.making_statuses.keys.to_a,prompt: "着手不可" ) %></br></td>
+         <%= form_with model: @order,url:admin_order_path(@order), local:true do |f| %>
+
+         <td> <%= f.submit "更新",class:"btn btn-success" %></br><% end %></td>
+       </tr>
+       <% end %>
+       </tbody>
+      </table>
+     </div>
+     <div class="col-4">
+　　　<div class="d-flex align-items-end">
+      <table class="table">
+       <tr>
+        <th scope="row">商品合計</th>
+        <td><%= @order.total_payment - shipping_cost %></td>
+       </tr>
+       <tr>
+        <th scope="row">送料</th>
+        <td><%= @order.shipping_cost %></td>
+       </tr>
+       <tr>
+        <th scope="row">請求金額合計</th>
+        <td><%= @order.total_payment  %></td>
+       </tr>
+
+      </table>
+　　　</div>
+     </div>
+    </div>
+   </div>

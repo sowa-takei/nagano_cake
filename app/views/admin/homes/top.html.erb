@@ -1,16 +1,24 @@
-<h1>管理者ログイン</h1>
-<%= form_with model: @admin, local: true do |f| %>
-  <div class="form-group">
-   <label for="mail_address">メールアドレス</label>
-   <%= f.text_field :email, class:"form-control book_title" %>
-  </div>
-
-  <div class="form-group">
-   <label for="password">パスワード</label>
-   <%= f.text_field :password, class:"form-control book_title" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit 'ログイン',class:"btn btn-success" %>
-  </div>
-<% end %>
+<h2>注文履歴一覧</h2>
+<table class="table">
+ <thead>
+	 <tr>
+		 <th>購入日時</th>
+		 <th>購入者</th>
+		 <th>注文個数</th>
+		 <th>注文ステータス</th>
+		 <th></th>
+	 </tr>
+ </thead>
+ <tbody>
+   <% @orders.each do |order| %>
+   <tr>
+     <td><%= link_to admin_order_path(order) do %>
+      <%= order.created_at.strftime("%Y/%m/%d %T") %></td>
+     <td><%= order.name %><% end %></td>
+     <td><% order.order_details.each do |order_detail| %>
+         <%= order_detail.amount %>
+         <% end %></td>
+     <td><%= order.status %></td>
+   </tr>
+   <% end %>
+ </tbody>

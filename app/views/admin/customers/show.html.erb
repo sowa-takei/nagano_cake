@@ -30,4 +30,12 @@
 <div class = "email">メールアドレス
 　　<%= @customer.email %>
 </div>
+
+<div class = "is_active">会員ステータス
+　　<% if @customer.is_active == true %>
+　　<span>有効</span>
+　　<% else %>
+　　<span>退会</span>
+　　<% end %>
+</div>
 <%= link_to "編集する",edit_admin_customer_path(@customer),class: "btn btn-sm btn-success" %>
