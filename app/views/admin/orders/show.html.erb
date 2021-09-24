@@ -47,10 +47,11 @@
 
          <td><%= order_detail.tax_price * order_detail.amount %></br></td>
 
-         <td><%= select(:order_detail, :id, OrderDetail.making_statuses.keys.to_a,prompt: "着手不可" ) %></br></td>
-         <%= form_with model: @order,url:admin_order_path(@order), local:true do |f| %>
+         <%= form_with model: @order,url:admin_order_detail_path(@order), local:true do |f| %>
+         <td><%= f.select :making_statuses, OrderDetail.making_statuses.keys.to_a,prompt: "着手不可"  %></br></td>
 
          <td> <%= f.submit "更新",class:"btn btn-success" %></br><% end %></td>
+
        </tr>
        <% end %>
        </tbody>
