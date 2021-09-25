@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get 'orders/verification' => "orders#verification"
   get 'orders/completion' => "orders#completion"
   get 'customers/withdrawal' => "customers#withdrawal"
-  get 'customers/process' => "customers#process"
+  put 'customers/proces' => "customers#proces"
   resources :items, only: [:index, :show]
   resources :orders, only: [:new, :index, :show, :create]
   resource :customers, only: [:show, :edit, :update]
