@@ -1,19 +1,24 @@
-<div class="container">
- <div class="row">
-  <div class="col-md-2">
-   <h4>ジャンル検索</h4>
-    <% @genres.each do |genre| %>
-    <%= genre.name %></br>
-    <% end %>
-   </div>
-  </div>
+ <div class="container">
    <div class="row">
+    <div class="col-md-2">
+
+       <div class="ganregroup">
+
+        <h5>ジャンル検索</h5>
+        <% @genres.each do |genre| %>
+         <%= genre.name %></br>
+        <% end %>
+
+       </div>
+    </div>
+
   <div class="col-md-10">
-<h1>商品一覧</h1>
- <% @products.each do |product| %>
+   <h2>商品一覧</h2>
+   <div class="row mx-auto mt-3">
+    <% @products.each do |product| %>
   <div class="form-group">
    <%= link_to item_path(product) do %>
-    <%= attachment_image_tag product, :image, :fill,300,200 %></br>
+    <%= attachment_image_tag product, :image, :fill,100,100 %></br>
     <%= product.name %><br>
     <%= product.price %>
    <% end %>

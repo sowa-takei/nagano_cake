@@ -1,32 +1,41 @@
   <div class="container">
    <div class="row">
     <div class="col-md-2">
-     <h4>ジャンル検索</h4>
-     <% @genres.each do |genre| %>
-     <%= genre.name %></br>
-     <% end %>
-     </div>
+
+       <div class="ganregroup">
+
+        <h5>ジャンル検索</h5>
+        <% @genres.each do |genre| %>
+         <%= genre.name %></br>
+        <% end %>
+
+       </div>
     </div>
-  <div class="row">
-   <!--<div class="col-md-10">-->
-   <p>ようこそ、ながのCAKEへ！</p>
-   <p>このサイトは、ケーキ販売のECサイトになります。</p>
-   <p>会員でない方も商品の閲覧はできますが、</p>
-   <p>購入には会員登録が必要になります。</p>
-   <h2>新着商品</h2>
-    <% @products.each do |product| %>
-    <div class="col-lg-6 col-md-6 mb-4">
-    <!--<div class="form-group">-->
-      <%= attachment_image_tag product, :image, :fill,100,100 %>
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <%= product.name %>
-    <!--</div>-->
-    <!--<div class="form-group">-->
-    <%= product.price %>
-    <!--</div>-->
+
+    <div class="col-md-10">
+     <p>ようこそ、ながのCAKEへ！</p>
+     <p>このサイトは、ケーキ販売のECサイトになります。</p>
+     <p>会員でない方も商品の閲覧はできますが、</p>
+     <p>購入には会員登録が必要になります。</p>
+     <h2>新着商品</h2>
+     <div class="row mx-auto mt-3">
+      <% @products.last(4).each do |product| %>
+      <div class="mx-auto">
+        <%= attachment_image_tag product, :image, :fill,100,100 %></br>
+      <div class="row mt-3">
+       <%= product.name %></br>
+      </div>
+      <div class="row mt-1">
+       ￥<%= product.price %>
+      </div>
+     </div>
+
+
+      <% end %>
+      </div>
+      <div class= "path">
+      <%= link_to "全ての商品を見る", items_path %>
+     </div>
+     </div>
    </div>
-    <% end %>
-    <%= link_to "全ての商品を見る", items_path %>
  </div>
-  </div>

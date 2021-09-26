@@ -1,25 +1,20 @@
 <h2>注文詳細履歴</h2>
-<div class= "name">購入者
- <%= @order.name %>
-</div>
+<label for="inputName">購入者</label>
+ <%= @order.name %></br>
 
-<div class= "created_at">注文日
- <%= @order.created_at.strftime("%Y/%m/%d") %>
-</div>
+<label for="inputCreate_at">注文日</label>
+ <%= @order.created_at.strftime("%Y/%m/%d") %></br>
 
-<div class= "address">配送先
- <%= @order.address %>
-</div>
+<label for="inputAddres">配送先</label>
+ <%= @order.address %></br>
 
-<div class= "payment_method">支払方法
- <%= @order.payment_method_i18n %>
-</div>
+<label for="inputPayment_method">支払方法</label>
+ <%= @order.payment_method_i18n %></br>
 
 <%= form_with model: @order,url:admin_order_path(@order), local:true do |f| %>
-<div class= "status">注文ステータス
+<label for="inputStetas">注文ステータス</label>
  <%#= f.select　(:order, :id, Order.statuses.keys.to_a ) %>
- <%= f.select :status, Order.statuses.keys.to_a %>
-</div>
+<%= f.select :status, Order.statuses.keys.to_a %>
 <%= f.submit "更新",class:"btn btn-success" %>
 <% end %>
 <div class="container">
