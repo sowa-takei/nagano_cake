@@ -1,23 +1,39 @@
- <div class="container">
-  <div class="row">
-   <div class="col-md-2">
-    <h4>ジャンル検索</h4>
-     <% @genres.each do |genre| %>
-     <%= genre.name %></br>
-     <% end %>
-   </div>
-  </div>
-  <div class="row">
-   <div class="col-md-10">
+ <<div class="container">
+   <div class="row">
+    <div class="col-md-2">
+     <div class="ganregroup">
+      <h5>ジャンル検索</h5>
+       <% @genres.each do |genre| %>
+        <%= genre.name %></br>
+       <% end %>
+     </div>
+    </div>
+    <div class="col-md-4">
     <%= form_with model: @cart_item,url:cart_items_path(@cart_item), local:true do |f| %>
-    <%= attachment_image_tag @product, :image, format: 'jpeg',size: "300x200" %>
-    <%= @product.name %>
-    <%= f.hidden_field :product_id, :value => @product.id %>
-
-    <%= @product.introduction %>
-    <%= f.select :amount, *[1..10],include_blank: "--個数選択--" %>
-
-    <%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
+      <%= attachment_image_tag @product, :image, format: 'jpeg',size: "300x200" %>
+    </div>
+    <div class="col-md-6">
+     <div class="name">
+     <span style="font-size:30px;">
+      <%= @product.name %>
+     </span>
+     </div>
+     <%= f.hidden_field :product_id, :value => @product.id %>
+     <div class="introduction">
+     <span style="font-size:30px;">
+      <%= @product.introduction %>
+     </span>
+     </div>
+     <div class="price">
+     <span style="font-size:25px;">
+      ￥<%= @product.with_tax_price %></span>(税込)
+     </div>
+     <div class="amount">
+      <%= f.select :amount, *[1..10],include_blank: "個数選択" %>
+     </div>
+     <div class="submit">
+      <%= f.submit "カートに入れる", class: "btn btn-sm btn-success" %>
+     </div>
     <% end %>
    </div>
   </div>
