@@ -1,12 +1,20 @@
-<h2>マイページ</h2>
-登録情報
-<%= link_to "編集する", edit_customers_path,class: "btn btn-sm btn-success" %>
+
 <div class="container">
  <div class="row">
   <div class="col-6">
-   <table class="table">
+   <h2>マイページ</h2>
+<table>
+ <tr>
+  <td style="width: 120px"><h4>登録情報</h4></td>
+  <td></td>
+  <td><%= link_to "編集する", edit_customers_path,class: "btn btn-sm btn-success" %></td>
+
+ </tr>
+</table>
+   <table class="table table-bordered">
     <tbody>
      <tr>
+      <thead class="thead-light">
       <th scope="row">氏名</th>
       <td><%= @customer.last_name %>
           <%= @customer.first_name %></td>
@@ -32,12 +40,24 @@
       <th scope="roe">メールアドレス</th>
       <td><%= @customer.email %></td>
      </tr>
+     </thead>
     </tbody>
    </table>
+   <table>
+ <tr>
+  <td><h4>配送先</h4></td>
+  <td></td>
+  <td><%= link_to "一覧を見る",addresses_path(@customer), class:"btn btn-primary" %></td>
+
+ </tr>
+ <tr>
+
+ <td style="width: 200px"><h4>注文履歴</h4></td>
+ <td></td>
+  <td><%= link_to "一覧を見る",orders_path(@order),class:"btn btn-primary" %></td>
+  </tr>
+ </table>
+</div>
   </div>
  </div>
 </div>
-<h2>配送先</h2>
-<%= link_to "一覧を見る",addresses_path(@customer) %>
-<h2>注文履歴</h2>
-<%= link_to "一覧を見る",orders_path(@order) %>
