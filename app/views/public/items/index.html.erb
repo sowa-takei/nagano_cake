@@ -1,32 +1,31 @@
  <div class="container">
    <div class="row">
     <div class="col-md-2">
-       <div class="ganregroup">
-        <h5>ジャンル検索</h5>
-        <% @genres.each do |genre| %>
-         <%= genre.name %></br>
-        <% end %>
-       </div>
-    </div>
-
-  <div class="col-md-10">
-   <h2>商品一覧</h2>
-   <div class="row mx-auto mt-3">
-      <% @products.first(8).each do |product| %>
-      <div class="mx-auto">
-       <%= link_to  item_path(product) do %>
-        <%= attachment_image_tag product, :image, :fill,200,200 %></br>
-      <div class="row mt-3">
-       <%= product.name %></br>
-      </div>
-      <div class="row mt-1">
-       ￥<%= product.price %>
-       <% end %>
-      </div>
+     <div class="ganregroup">
+      <h5>ジャンル検索</h5>
+      <% @genres.each do |genre| %>
+       <%= genre.name %></br>
+      <% end %>
      </div>
-   <% end %>
     </div>
-  </div>
+    <div class="col-md-10">
+     <h2>商品一覧</h2>
+     <div class="row mx-auto mt-3">
+     <% @products.first(8).each do |product| %>
+     <div class="mx-auto">
+      <%= link_to  item_path(product) do %>
+      <%= attachment_image_tag product, :image, :fill,200,200 %></br>
+     <div class="row mt-3">
+      <%= product.name %></br>
+     </div>
+     <div class="row mt-1">
+      ￥<%= product.price %>
+      <% end %>
+     </div>
+     </div>
+     <% end %>
+    </div>
+   </div>
   </div>
  </div>
  <%= paginate @products %>

@@ -4,11 +4,9 @@
  <h4>支払方法</h4>
  <div class="radio">
   <%= f.radio_button :payment_method, true %>クレジットカード</br>
-
   <%= f.radio_button :payment_method, 1 %>銀行振込
  </div>
 </div></br>
-
 <div class="field">
  <h4>お届け先</h4>
  <div class="radio">
@@ -36,7 +34,7 @@
 
   <div class="field">
     <%= f.label :住所 %>
-    <%= f.text_field :address,placeholder: "東京都渋谷区代々木神園町0-0" %>
+    <%= f.text_field :address,:size=>"60",placeholder: "東京都渋谷区代々木神園町0-0" %>
    </div>
 
    <div  class="field">
