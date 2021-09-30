@@ -34,10 +34,8 @@
      <%# @orders.each do |order| %>
      <tr>
       <thead class="thead-light">
-      <th scope="row">送料</th>
-
-      <td><%= shipping_cost %> </td>
-
+       <th scope="row">送料</th>
+       <td><%= shipping_cost %> </td>
      </tr>
      <tr>
       <th scope="roe">商品合計</th>
@@ -46,7 +44,7 @@
      <tr>
       <th scope="roe">請求金額</th>
       <td><%= @sum + shipping_cost %></td>
-       </thead>
+      </thead>
      </tr>
     </tbody>
    </table>

@@ -1,42 +1,64 @@
-<h2><%= @customer.last_name %>
-    <%= @customer.first_name %>さんの会員詳細</h2>
-
-<div class= "customer" >会員ID
-    <%= @customer.id %>
+<div class="container">
+ <div class="row">
+  <div class="col-md-10">
+   <h2><%= @customer.last_name %>
+       <%= @customer.first_name %>さんの会員詳細</h2>
+   <table>
+    <tr>
+     <th><label for="inputName">会員ID</label></th>
+     <td><%= @customer.id %></td>
+    </tr>
+    <tr>
+     <th><label for="inputName">氏名</label></th>
+     <td><%= @customer.last_name %>
+　　     <%= @customer.first_name %></td>
+    </tr>
+    <tr>
+     <th><label for="inputName">フリガナ</label></th>
+     <td><%= @customer.last_name_kana %>
+　　     <%= @customer.first_name_kana %></td>
+    </tr>
+    <tr>
+     <th><label for="inputName">郵便番号</label></th>
+     <td><%= @customer.postal_code %></td>
+    </tr>
+    <tr>
+     <th><label for="inputName">住所</label></th>
+     <td><%= @customer.address %></td>
+    </tr>
+    <tr>
+     <th><label for="inputName">電話番号</label></th>
+     <td><%= @customer.telephone_number %></td>
+    </tr>
+    <tr>
+     <th><label for="inputName">メールアドレス</label></th>
+     <td><%= @customer.email %></td>
+    </tr>
+    <tr>
+     <th><label for="inputName">会員ステータス</label></th>
+     <td><% if @customer.is_active == true %>
+　　      <span style="color: green">有効</span>
+　　     <% else %>
+　　     <span style="color: gray">退会</span>
+　　     <% end %>
+　　 </td>
+    </tr>
+    <tr>
+     <th></th>
+     <td><%= link_to "編集する",edit_admin_customer_path(@customer),class: "btn btn-sm btn-success" %>
+         <%= link_to "注文履歴一覧を見る",admin_path(@customer),class: "btn btn-sm btn-primary" %>
+     </td>
+    </tr>
+   </table>
+  </div>
+ </div>
 </div>
 
-<div class = "name" >氏名
-　　<%= @customer.last_name %>
-　　<%= @customer.first_name %>
-</div>
 
-<div class = "name_kana">フリガナ
-　　<%= @customer.last_name_kana %>
-　　<%= @customer.first_name_kana %>
-</div>
 
-<div class = "postal_code">郵便番号
-    <%= @customer.postal_code %>
-</div>
 
-<div class = "address" >住所
-　　<%= @customer.address %>
-</div>
 
-<div class = "telephone_number">電話番号
-　　<%= @customer.telephone_number %>
-</div>
 
-<div class = "email">メールアドレス
-　　<%= @customer.email %>
-</div>
 
-<div class = "is_active">会員ステータス
-　　<% if @customer.is_active == true %>
-　　<span>有効</span>
-　　<% else %>
-　　<span>退会</span>
-　　<% end %>
-</div>
-<%= link_to "編集する",edit_admin_customer_path(@customer),class: "btn btn-sm btn-success" %>
-<%= link_to "注文履歴一覧を見る",admin_path(@customer),class: "btn btn-sm btn-primary" %>
+
+

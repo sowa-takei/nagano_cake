@@ -44,7 +44,6 @@
       </tr>
     </thead>
    </table>
-
   </div>
  </div>
  <div class="row">
@@ -53,22 +52,21 @@
    <table class="table table-bordered">
     <thead class="thead-light">
     <tr>
-        <th>商品</th>
-        <th>単価(税込)</th>
-        <th>個数</th>
-        <th>小計</th>
-     </tr>
-      <% @orders.each do |order| %>
-       <tr>
-        <td><%= order.product.name %></td>
-        <td><%= order.tax_price %></td>
-        <td><%= order.amount %></td>
-        <td><%= order.tax_price * order.amount %></td>
-       </tr>
-       <% end %>
-
-   </thead>
-  </table>
+     <th>商品</th>
+     <th>単価(税込)</th>
+     <th>個数</th>
+     <th>小計</th>
+    </tr>
+    <% @orders.each do |order| %>
+    <tr>
+     <td><%= order.product.name %></td>
+     <td><%= order.tax_price %></td>
+     <td><%= order.amount %></td>
+     <td><%= order.tax_price * order.amount %></td>
+    </tr>
+    <% end %>
+    </thead>
+   </table>
   </div>
  </div>
 </div>

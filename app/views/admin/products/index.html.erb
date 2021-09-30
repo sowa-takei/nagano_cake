@@ -1,6 +1,6 @@
 <h2>商品一覧</h2>
  <table class="table">
-  <thead>
+  <thead class="thead-light">
    <tr>
     <th>商品ID</th>
     <th>商品名</th>
@@ -10,28 +10,24 @@
    </tr>
   </thead>
   <tbody>
-<% @products.each do |product| %>
-<tr>
- <td><%= product.id %></td>
- <td><%= link_to  admin_product_path(product) do %>
-     <%= product.name %><% end %>
- </td>
-
- <td><%= converting_to_jpy(product.price) %></td>
-
- <td><%= product.genre.name %></td>
-
-
- <td><label for="product_is_activ"></label>
-  <% if product.is_active == true %>
-  <span>販売中</span>
-  <% else %>
-  <span>販売停止中</span>
+  <% @products.each do |product| %>
+  <tr>
+   <td><%= product.id %></td>
+   <td><%= link_to  admin_product_path(product) do %>
+       <%= product.name %><% end %>
+   </td>
+   <td><%= converting_to_jpy(product.price) %></td>
+   <td><%= product.genre.name %></td>
+   <td><label for="product_is_activ"></label>
+   <% if product.is_active == true %>
+   <span style="color: green">販売中</span>
+   <% else %>
+   <span style="color: gray">販売停止中</span>
+   <% end %>
+   </td>
+  </tr>
   <% end %>
- </td>
- </tr>
-<% end %>
-</table>
+ </table>
 
 
 <%= paginate @products %>
