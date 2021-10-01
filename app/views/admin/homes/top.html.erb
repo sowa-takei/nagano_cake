@@ -18,13 +18,10 @@
       <%= order.created_at.strftime("%Y/%m/%d %T") %></td>
      <td><%= order.name %><% end %></td>
      <td><% order.order_details.each do |order_detail,i| %>
-         <%#= order_detail.amount %>
-         <%#  if i == order_detail.amount - 1 %>
          <% @sum += order_detail.amount %>
-         <%= @sum %>
          <% end %>
-         <%# end %>
-       <% @sum = 0 %>
+         <%= @sum %>
+         <% @sum = 0 %>
      </td>
      <td><%= order.status %></td>
    </tr>

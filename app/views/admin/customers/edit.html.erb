@@ -9,7 +9,7 @@
      <th><label for="customer_id">会員ID</th>
      <td><%= @customer.id %></td>
     </tr>
-    <%= form_with model: @customer,url:admin_customer_path(@customer), local:true do |f| %>
+    <%= form_with model: @customer,url: admin_customer_path(@customer), local:true do |f| %>
     <tr>
      <th><label for="customer_name">氏名</label></th>
      <td><%= f.text_field :last_name %>
